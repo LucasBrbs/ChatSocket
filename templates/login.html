@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login - Chat</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background:#f7f7f7; }
+    .card { max-width: 420px; margin: 12vh auto; background: #fff; padding: 24px; border-radius: 12px; box-shadow: 0 6px 24px rgba(0,0,0,.08); }
+    h1 { margin: 0 0 16px; font-size: 22px; }
+    label { display:block; font-size:14px; margin-bottom:8px; color:#444; }
+    input[type=text]{ width:100%; padding:12px 14px; border:1px solid #ddd; border-radius:8px; font-size:16px; }
+    .btn { margin-top:14px; display:inline-block; background:#10a37f; color:#fff; border:none; padding:12px 16px; border-radius:8px; cursor:pointer; font-weight:600; }
+    .msgs { margin-top: 10px; color:#b00020; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Entrar no Chat</h1>
+    <form method="post" action="/login">
+      <label for="name">Seu nome</label>
+      <input id="name" name="name" type="text" placeholder="Ex.: lucas" required />
+      <button class="btn" type="submit">Entrar</button>
+    </form>
+    <div class="msgs">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for m in messages %}<div>{{ m }}</div>{% endfor %}
+        {% endif %}
+      {% endwith %}
+    </div>
+  </div>
+</body>
+</html>
